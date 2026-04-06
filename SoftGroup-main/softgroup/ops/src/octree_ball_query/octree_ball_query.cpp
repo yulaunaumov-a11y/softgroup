@@ -24,7 +24,7 @@ void Octree::build_tree(const float *points, const float *xyzwhl,
   // root node
   root = new Node;
   root->box =
-      (Box){xyzwhl[0], xyzwhl[1], xyzwhl[2], xyzwhl[3], xyzwhl[4], xyzwhl[5]};
+      Box{xyzwhl[0], xyzwhl[1], xyzwhl[2], xyzwhl[3], xyzwhl[4], xyzwhl[5]};
   root->num_points = num_points;
 
   // build octants

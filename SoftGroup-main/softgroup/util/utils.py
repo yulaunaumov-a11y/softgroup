@@ -112,11 +112,11 @@ def load_checkpoint(checkpoint, logger, model, optimizer=None, strict=False):
     if hasattr(model, 'module'):
         model = model.module
     device = torch.cuda.current_device()
-    state_dict = torch.load(checkpoint, map_location=lambda storage, loc: storage.cuda(device))
+    state_dict = torch.load(checkpoint, map_location=lambda storage, loc: storage.cuda(device), weights_only=True)
     src_state_dict = state_dict['net']
     target_state_dict = model.state_dict()
     skip_keys = []
-    # skip mismatch size tensors in case of pretraining
+    # skip mismatch size tensors in case of pretraining 
     for k in src_state_dict.keys():
         if k not in target_state_dict:
             continue

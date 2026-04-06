@@ -21,12 +21,12 @@ void voxelize_idx(/* long N*4 */ at::Tensor coords,
                   Int batchSize, Int mode);
 
 template <Int dimension>
-void voxelize_outputmap(long *coords, long *output_coords, Int *output_map,
+void voxelize_outputmap(int64_t *coords, int64_t *output_coords, Int *output_map,
                         Int *rule, Int nOutputRows, Int maxActive);
 
 template <Int dimension>
 Int voxelize_inputmap(SparseGrids<dimension> &SGs, Int *input_map,
-                      RuleBook &rules, Int &nActive, long *coords,
+                      RuleBook &rules, Int &nActive, int64_t *coords,
                       Int nInputRows, Int nInputColumns, Int batchSize,
                       Int mode);
 

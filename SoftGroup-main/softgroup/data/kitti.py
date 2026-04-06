@@ -50,14 +50,10 @@ class KITTIDataset(CustomDataset):
                                            with_label, repeat, logger)
 
     def get_filenames(self):
-        filenames_all = []
-        for p in self.split:
-            filenames = glob(
-                osp.join(self.data_root, 'sequences', f'{p:02d}', 'velodyne', '*' + self.suffix))
-            assert len(filenames) > 0, f'Empty {p}'
-            filenames_all.extend(filenames)
-        filenames_all = sorted(filenames_all * self.repeat)
-        return filenames_all
+        # Замените весь метод на это:
+        pattern = osp.join(self.data_root, self.prefix, 'velodyne', '*' + self.suffix)
+        filenames = glob(pattern)
+        return sorted(filenames)
 
     def load(self, filename):
         data = np.fromfile(filename, dtype=np.float32).reshape(-1, 4)

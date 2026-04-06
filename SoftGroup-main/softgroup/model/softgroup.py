@@ -547,6 +547,7 @@ class SoftGroup(nn.Module):
         if proposals_idx.size(0) == 0:
             return []
 
+        proposals_idx = proposals_idx.cuda()
         num_instances = cls_scores.size(0)
         num_points = semantic_scores.size(0)
         cls_scores = cls_scores.softmax(1)

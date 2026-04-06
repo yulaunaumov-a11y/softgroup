@@ -75,6 +75,9 @@ def collect_results_gpu(result_part, size):
 
 def collect_results_cpu(result_part, size, tmpdir=None):
     rank, world_size = get_dist_info()
+    # single GPU: no need for distributed collection
+    if world_size == 1:
+        return result_part[:size]
     # create a tmp dir if it is not specified
     if tmpdir is None:
         MAX_LEN = 512

@@ -14,7 +14,7 @@ __global__ void voxelize_fp_cuda_(Int nOutputRows, Int maxActive, Int nPlanes,
     T *out = output_feats + row * nPlanes;
     Int *r = rules + row * (maxActive + 1);
     Int nActive = r[0];
-    T multiplier = (average and nActive > 0) ? (T)1 / nActive : (T)1;
+    T multiplier = (average && nActive > 0) ? (T)1 / nActive : (T)1;
     for (int i = 1; i <= nActive; i++) {
       T *inp = feats + r[i] * nPlanes;
       for (int plane = threadIdx.x; plane < nPlanes; plane += blockDim.x) {
@@ -43,7 +43,7 @@ __global__ void voxelize_bp_cuda_(Int nOutputRows, Int maxActive, Int nPlanes,
     T *out = d_output_feats + row * nPlanes;
     Int *r = rules + row * (maxActive + 1);
     Int nActive = r[0];
-    T multiplier = (average and nActive > 0) ? (T)1 / nActive : (T)1;
+    T multiplier = (average && nActive > 0) ? (T)1 / nActive : (T)1;
     for (int i = 1; i <= nActive; i++) {
       T *inp = d_feats + r[i] * nPlanes;
       for (int plane = threadIdx.x; plane < nPlanes; plane += blockDim.x) {
