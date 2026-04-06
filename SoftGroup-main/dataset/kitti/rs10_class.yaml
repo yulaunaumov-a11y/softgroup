@@ -1,0 +1,54 @@
+# my_dataset.yaml
+labels:
+  0: "never_classified"
+  2: "ground"
+  4: "medium_vegetation"
+  5: "high_vegetation"
+  6: "building"
+  7: "low_point"
+  14: "wire_conductor"
+  65: "pillar"
+  66: "traffic_sign"
+  73: "unknown_73"
+  79: "fence"
+
+# Маппинг для обучения (преобразуем ваши ID в последовательные ID SoftGroup)
+learning_map:
+  0: 0        # never_classified -> ignore
+  2: 1        # ground -> stuff
+  4: 2        # medium_vegetation -> stuff
+  5: 3        # high_vegetation -> stuff
+  6: 4        # building -> stuff
+  7: 0        # low_point -> ignore (шум)
+  14: 5       # wire_conductor -> stuff
+  65: 6       # pillar -> thing
+  66: 7       # traffic_sign -> thing
+  73: 8       # unknown_73 -> stuff
+  79: 9       # fence -> stuff
+
+# Обратный маппинг (для визуализации)
+learning_map_inv:
+  0: 0
+  1: 2
+  2: 4
+  3: 5
+  4: 6
+  5: 14
+  6: 65
+  7: 66
+  8: 73
+  9: 79
+
+# Цвета для визуализации (в формате RGB)
+color_map:
+  0: [128, 128, 128]   # never_classified
+  2: [139, 69, 19]     # ground (коричневый)
+  4: [0, 128, 0]       # medium_vegetation (зеленый)
+  5: [0, 255, 0]       # high_vegetation (ярко-зеленый)
+  6: [255, 0, 0]       # building (красный)
+  7: [0, 0, 0]         # low_point (черный)
+  14: [255, 255, 0]    # wire_conductor (желтый)
+  65: [128, 0, 128]    # pillar (фиолетовый)
+  66: [0, 0, 255]      # traffic_sign (синий)
+  73: [255, 165, 0]    # unknown_73 (оранжевый)
+  79: [139, 69, 19]    # fence (коричневый)
